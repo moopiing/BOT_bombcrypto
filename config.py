@@ -5,7 +5,7 @@ if sys.platform != "darwin":
     os = 1
 
 # RESOURCE
-res = 'res_msi'
+res = 'res_vps'
 
 # REFRESH
 max_round_login = 10

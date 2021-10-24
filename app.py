@@ -92,6 +92,7 @@ def refresh():
         pyautogui.hotkey('command', 'shift', 'r')
     else:
         pyautogui.hotkey('ctrl', 'shift', 'r')
+    sleep(15)
 
 def checkGameStage(arr):
     if pyautogui.locateOnScreen(res + '/connect.png', region=(arr), grayscale=True, confidence=0.8) != None:
@@ -144,7 +145,7 @@ def clickImageFull(arr, name, multiple, gray=True, loopCheck=True):
 def scrollToBottom(arr, num):
     print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + " Scroll to bottom")
     for i in range(num):
-        clickImage(arr, 'ing', os)
+        clickImage(arr, 'homebtn', os, gray=False)
         pyautogui.mouseDown(button='left')
         pyautogui.moveTo(pyautogui.position().x, pyautogui.position().y-100, os)
         pyautogui.mouseUp(button='left')
@@ -155,7 +156,7 @@ def manageHeroes(arr):
     while 1:
         try:
             pyautogui.scroll(-50)
-            clickImage(arr, 'work', os, gray=False, loopCheck=False)
+            clickImage(arr, 'workbtn', os, gray=False, loopCheck=False)
             if checkGameStage(arr) == "ERROR":
                 print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + " Error Found!")
                 error(arr)
