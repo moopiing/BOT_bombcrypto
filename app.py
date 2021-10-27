@@ -95,7 +95,11 @@ def refresh():
     sleep(15)
 
 def checkGameStage(arr):
-    if pyautogui.locateOnScreen(res + '/connect.png', region=(arr), grayscale=True, confidence=0.8) != None:
+    if pyautogui.locateOnScreen(res + '/error.png', region=(arr), grayscale=True, confidence=0.8) != None:
+        return "ERROR"
+    elif pyautogui.locateOnScreen(res + '/says.png', region=(arr), grayscale=True, confidence=0.8) != None:
+        return "SAYS"
+    elif pyautogui.locateOnScreen(res + '/connect.png', region=(arr), grayscale=True, confidence=0.8) != None:
         return "LOGIN"
     elif pyautogui.locateOnScreen(res + '/main.png', region=(arr), grayscale=True, confidence=0.8) != None:
         return "MAIN"
@@ -105,10 +109,6 @@ def checkGameStage(arr):
         return "COMPLETE"
     elif pyautogui.locateOnScreen(res + '/ingame.png', region=(arr), grayscale=True, confidence=0.8) != None:
         return "INGAME"
-    elif pyautogui.locateOnScreen(res + '/error.png', region=(arr), grayscale=True, confidence=0.8) != None:
-        return "ERROR"
-    elif pyautogui.locateOnScreen(res + '/says.png', region=(arr), grayscale=True, confidence=0.8) != None:
-        return "SAYS"
     else:
         return "UNDEFINED"
 
@@ -157,9 +157,9 @@ def manageHeroes(arr):
         try:
             pyautogui.scroll(-50)
             clickImage(arr, 'workbtn', os, gray=False, loopCheck=False)
-            if checkGameStage(arr) == "ERROR":
-                print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + " Error Found!")
-                error(arr)
+            # if checkGameStage(arr) == "ERROR":
+            #     print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + " Error Found!")
+            #     error(arr)
         except:
             break
     print(datetime.now().strftime("%d/%m/%Y %H:%M:%S") + " Resting Heroes Not Found!")
